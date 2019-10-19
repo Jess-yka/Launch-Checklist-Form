@@ -56,7 +56,7 @@ window.addEventListener("load", function() {
          pilotStatus.innerHTML = `Pilot ${pilotName.value} is ready for launch`
          copilotStatus.innerHTML = "Co-pilot not ready"
 
-      } else if (fuelLevel.value === "" || fuelLevel.value < 10000) {
+      } else if (fuelLevel.value === "") {
          alert("All fields are required!");
          event.preventDefault();
          faultyItems.style.visibility = "visible";
@@ -66,7 +66,7 @@ window.addEventListener("load", function() {
          copilotStatus.innerHTML = `Co-pilot ${copilotName.value} is ready for launch`
          fuelStatus.innerHTML = "Fuel level too low for launch"
          
-      } else if (cargoMass.value === "" || cargoMass.value > 10000) {
+      } else if (cargoMass.value === "") {
          alert("All fields are required!");
          event.preventDefault();
          faultyItems.style.visibility = "visible";
@@ -81,9 +81,34 @@ window.addEventListener("load", function() {
          alert("Make sure to enter valid information for each field!")
          event.preventDefault();
 
-      } else if (fuelLevel.value < 10000 || cargoMass.value > 10000) {
-         alert("Make sure to enter valid information for each field!kkkkkkk")
+      } else if (fuelLevel.value < 10000 && cargoMass.value > 10000) {
          event.preventDefault();
+         faultyItems.style.visibility = "visible";
+         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+         launchStatus.style.color = "red";
+         pilotStatus.innerHTML = `Pilot ${pilotName.value} is ready for launch`
+         copilotStatus.innerHTML = `Co-pilot ${copilotName.value} is ready for launch`
+         fuelStatus.innerHTML = "Fuel level too low for launch"
+         cargoStatus.innerHTML = "Cargo mass too high for launch"
+
+      } else if (fuelLevel.value > 10000) {
+         event.preventDefault();
+         faultyItems.style.visibility = "visible";
+         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+         launchStatus.style.color = "red";
+         pilotStatus.innerHTML = `Pilot ${pilotName.value} is ready for launch`
+         copilotStatus.innerHTML = `Co-pilot ${copilotName.value} is ready for launch`
+         fuelStatus.innerHTML = "Fuel level too high for launch"
+
+      } else if (cargoMass.value <= 0) {
+         event.preventDefault();
+         faultyItems.style.visibility = "visible";
+         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+         launchStatus.style.color = "red";
+         pilotStatus.innerHTML = `Pilot ${pilotName.value} is ready for launch`
+         copilotStatus.innerHTML = `Co-pilot ${copilotName.value} is ready for launch`
+         cargoStatus.innerHTML = "Cargo mass too low for launch"
+
       } else {
          launchStatus.innerHTML = "Shuttle Is Ready for Launch";
          launchStatus.style.color = "green";
