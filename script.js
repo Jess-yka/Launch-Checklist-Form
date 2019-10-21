@@ -74,7 +74,6 @@ window.addEventListener("load", function() {
          launchStatus.style.color = "red";
          pilotStatus.innerHTML = `Pilot ${pilotName.value} is ready for launch`
          copilotStatus.innerHTML = `Co-pilot ${copilotName.value} is ready for launch`
-         fuelStatus.innerHTML = "Fuel level high enough for launch"
          cargoStatus.innerHTML = "Cargo mass too high for launch"
       
       } else if (!isNaN(pilotName.value) || !isNaN(copilotName.value) || isNaN(fuelLevel.value) || isNaN(cargoMass.value)) {
